@@ -24,7 +24,7 @@
                 if ( isMouseDown ) {
                     if (!started) {
                         // dragging started
-                        $.isFunction(data.start) && data.start.apply(that, arguments);
+                       !$.isEmptyObject(data) && $.isFunction(data.start) && data.start.apply(that, arguments);
                     }
                     // being dragged
                     dragHandler && dragHandler.apply(that, arguments);
@@ -38,7 +38,7 @@
             .on('mouseup.md mouseleave.md', function() {
                 if (started) {
                     // dragging stopped
-                    $.isFunction(data.stop) && data.stop.apply(that, arguments);
+                    !$.isEmptyObject(data) && $.isFunction(data.stop) && data.stop.apply(that, arguments);
                 }
                 isMouseDown = false;
                 started = false;
